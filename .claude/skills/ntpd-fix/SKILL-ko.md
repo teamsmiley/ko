@@ -83,11 +83,11 @@ jira_ticket create --project NETOP --summary "Fix ntpd issue on <host>" --descri
 ! cd ~/Desktop/ooma-gitlab/_netops_infra && uv run ansible <host> -b -m shell -a 'timedatectl; systemctl is-active ntpd chronyd; ntpq -pn; chronyc sources; chronyc tracking; ls -ld /var/lib/ntp; journalctl -u ntpd -u chronyd -n 30 --no-pager; true'
 ```
 
-| 결과      | ntpd                                         | chronyd                              |
-| --------- | -------------------------------------------- | ------------------------------------ |
-| 해결됨    | peer 앞에 `*`, `reach`가 0보다 큼            | `^*` 소스, `Leap status: Normal`     |
-| 기다림    | `+` peer만 있거나 `reach`가 아직 올라가는 중 | `^?` 소스이고 `Reach`가 올라가는 중  |
-| 해결 안 됨 | `reach`가 계속 0                             | 모두 `^?`, `Reach`가 계속 0          |
+| 결과       | ntpd                                         | chronyd                             |
+| ---------- | -------------------------------------------- | ----------------------------------- |
+| 해결됨     | peer 앞에 `*`, `reach`가 0보다 큼            | `^*` 소스, `Leap status: Normal`    |
+| 기다림     | `+` peer만 있거나 `reach`가 아직 올라가는 중 | `^?` 소스이고 `Reach`가 올라가는 중 |
+| 해결 안 됨 | `reach`가 계속 0                             | 모두 `^?`, `Reach`가 계속 0         |
 
 해결된 경우에도 `timedatectl`이 시계가 동기화되었다고 보여야 합니다. 해결되지 않았으면 플레이북을 다시 돌리지 않습니다. 다음은 NTP 서버를 살펴봅니다.
 

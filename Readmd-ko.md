@@ -22,7 +22,8 @@
 ## 작업 디렉토리 만들기
 
 ```sh
-mkdir ~/Desktop/how-i-use-ai
+mkdir ~/Desktop/infra-how-brian-use-ai
 cd ~/Desktop/
 git clone git@gitlab.com:oomaforbin/oomacorp/networkoperations/infra-how-brian-use-ai.git
+cd infra-how-brian-use-ai
 ```
